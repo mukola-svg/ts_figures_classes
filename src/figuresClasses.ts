@@ -12,6 +12,10 @@ export class Triangle implements Figure {
     public b: number,
     public c: number,
   ) {
+    if (this.a <= 0 || this.b <= 0 || this.c <= 0) {
+      throw new Error('Triangle sides must be positive numbers');
+    }
+
     if (
       this.a + this.b <= this.c ||
       this.a + this.c <= this.b ||
@@ -20,9 +24,6 @@ export class Triangle implements Figure {
       throw new Error('Invalid triangle');
     }
 
-    if (this.a <= 0 || this.b <= 0 || this.c <= 0) {
-      throw new Error('Invalid triangle');
-    }
     this.shape = 'triangle';
   }
 
@@ -42,21 +43,17 @@ export class Circle implements Figure {
     public color: string,
     public radius: number,
   ) {
-    if (radius <= 0) {
-      throw new Error('Invalid circle');
+    if (this.radius <= 0) {
+      throw new Error('Radius must be greater than 0 circle');
     }
 
-    if (this.radius <= 0) {
+    if (radius <= 0) {
       throw new Error('Invalid circle');
     }
     this.shape = 'circle';
   }
 
   getArea(): number {
-    if (this.radius <= 0) {
-      throw new Error('Invalid circle');
-    }
-
     const aray = Math.PI * this.radius ** 2;
 
     return Math.floor(aray * 100) / 100;
@@ -71,11 +68,11 @@ export class Rectangle implements Figure {
     public width: number,
     public height: number,
   ) {
-    if (this.width <= 0 || this.height <= 0) {
-      throw new Error('Invalid rectangle');
+    if (this.height <= 0 || this.width <= 0) {
+      throw new Error('Width and height must be greater than 0');
     }
 
-    if (this.height <= 0 || this.width <= 0) {
+    if (this.width <= 0 || this.height <= 0) {
       throw new Error('Invalid rectangle');
     }
     this.shape = 'rectangle';
