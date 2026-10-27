@@ -19,6 +19,10 @@ export class Triangle implements Figure {
     ) {
       throw new Error('Invalid triangle');
     }
+
+    if (this.a <= 0 || this.b <= 0 || this.c <= 0) {
+      throw new Error('Invalid triangle');
+    }
     this.shape = 'triangle';
   }
 
@@ -39,6 +43,10 @@ export class Circle implements Figure {
     public radius: number,
   ) {
     if (radius <= 0) {
+      throw new Error('Invalid circle');
+    }
+
+    if (this.radius <= 0) {
       throw new Error('Invalid circle');
     }
     this.shape = 'circle';
@@ -64,6 +72,10 @@ export class Rectangle implements Figure {
     public height: number,
   ) {
     if (this.width <= 0 || this.height <= 0) {
+      throw new Error('Invalid rectangle');
+    }
+
+    if (this.height <= 0 || this.width <= 0) {
       throw new Error('Invalid rectangle');
     }
     this.shape = 'rectangle';
